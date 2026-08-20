@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#2f9e6f" />
+  <title>Tally — Pantry Tracker</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>🥫 Tally</h1>
+    <span class="badge"><span id="sync-dot" class="sync-dot"></span>v3.2 · synced</span>
+  </header>
+
+  <main id="view" class="view"></main>
+
+  <nav class="tabbar">
+    <button class="tab active" data-view="pantry">🥫<span>Pantry</span></button>
+    <button class="tab" data-view="scan">📸<span>Scan</span></button>
+    <button class="tab" data-view="list">🛒<span>List</span></button>
+    <button class="tab" data-view="cook">🍳<span>Cook</span></button>
+    <button class="tab" data-view="insights">📊<span>Insights</span></button>
+    <button class="tab" data-view="add">➕<span>Add</span></button>
+  </nav>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <p id="modal-msg"></p>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden">
+    <span id="toast-msg"></span>
+    <button id="toast-action" class="toast-action hidden"></button>
+  </div>
+
+  <!-- OCR engine + PDF reader (cached after first online load) -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.2.67/build/pdf.min.mjs" type="module"></script>
+  <script type="module">
+    import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.2.67/build/pdf.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.2.67/build/pdf.worker.min.mjs';
+    window.pdfjsLib = pdfjsLib;
+  </script>
+  <!-- App scripts -->
+  <script src="data.js"></script>
+  <script src="substitutions.js"></script>
+  <script src="receipt.js"></script>
+  <script src="recipes.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>

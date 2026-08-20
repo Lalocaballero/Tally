@@ -1,0 +1,16 @@
+{
+  "name": "Tally — Pantry Tracker",
+  "short_name": "Tally",
+  "description": "Shared bilingual grocery & pantry tracker",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f3f8f5",
+  "theme_color": "#2f9e6f",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Crect width='192' height='192' rx='40' fill='%232f9e6f'/%3E%3Ctext x='96' y='130' font-size='96' text-anchor='middle'%3E%F0%9F%A5%AB%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}
